@@ -35,7 +35,7 @@ public class LoginController {
             System.out.println("用户存在");
             //密码不正确
             if(!users.get(0).getPassword().equals(password)){
-                LoginRes.setMessage("密码不正确");
+                LoginRes.setMessage("该用户已存在，且密码不正确");
                 LoginRes.setStatus(3);
                 return LoginRes;
             }

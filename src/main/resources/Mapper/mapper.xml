@@ -3,6 +3,9 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.syb.Dao.UserDao">
+    <select id="queryUserById" parameterType="String" resultType="User">
+        select * from userinfo where userId = #{userId}
+    </select>
     <select id="queryUserByName" parameterType="String" resultType="User">
         select * from userinfo
         <if test="username != 'all'">
@@ -13,6 +16,6 @@
         insert into userinfo(username,password) values(#{username},#{password})
     </insert>
     <delete id="deleteUser" parameterType="String">
-        delete from userinfo where username=#{username};
+        delete from userinfo where userId=#{userId};
     </delete>
 </mapper>
