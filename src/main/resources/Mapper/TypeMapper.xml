@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.syb.Dao.BillTypeDao">
+    <select id="queryTypeByUser" parameterType="String" resultType="BillType">
+        select * from billTypes where username = #{username}
+    </select>
+    <insert id="addBillType">
+        insert into billTypes(username,billType)
+        values(#{username},#{billType})
+    </insert>
+    <delete id="deleteBillType" parameterType="String">
+        delete from billTypes where username = #{username} and billType = #{billType};
+    </delete>
+    <update id="updateBillType">
+        update billTypes
+        set billType = #{newBillType}
+        where username = #{username} and billType = #{oldBillType}
+    </update>
+</mapper>

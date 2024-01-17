@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.syb.Dao.BillDao">
+    <select id="queryBillByUser" parameterType="String" resultType="Bill">
+        select * from bill where username = #{username} and createdTime >= #{startDate}
+    and createdTime &lt;= #{endDate}
+    </select>
+    <insert id="addBill" >
+        insert into bill(username,amount,remark,billType,createdTime)
+        values(#{username},#{amount},#{remark},#{billType},CURRENT_TIMESTAMP())
+    </insert>
+    <delete id="deleteBill" parameterType="int">
+        delete from bill where billId=#{billId};
+    </delete>
+    <update id="updateBill">
+        update bill
+        set amount=#{amount}, remark=#{remark}, billType=#{billType},createdTime=createdTime
+        where billId=#{billId}
+    </update>
+</mapper>
